@@ -13,6 +13,12 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def show
+    @micropost = Micropost.find_by_id(params[:id])
+    @user = current_user
+    @author = @micropost.user
+  end
+
   def destroy
     @micropost.destroy
     redirect_to root_url

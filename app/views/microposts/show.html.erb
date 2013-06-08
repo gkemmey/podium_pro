@@ -1,0 +1,86 @@
+<% provide(:title, @user.name) %>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+<script type="text/javascript">
+  var micropost_id = "<%= @micropost.id %>";
+  var video_key = "<%= @micropost.content %>";
+
+  var params = { allowScriptAccess: "always" };
+  var atts = { id: "player_" + micropost_id };
+
+  swfobject.embedSWF("http://www.youtube.com/v/" + video_key + "?enablejsapi=1&",
+                     micropost_id, "610", "356", "8", null, null, params, atts);
+</script>
+
+<script type="text/javascript">
+  var getTime = function(id) {
+    document.getElementById("output").innerHTML += id + "<br />";
+
+    var player = document.getElementById(id);
+
+    document.getElementById("output").innerHTML += player.getCurrentTime() + "<br />";
+  }
+</script>
+
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @author %>
+        <%= link_to @author.name, user_path(@author) %>
+      </h1>
+    </section>
+  </aside>
+
+
+  <div class="span8">
+    <h3>Speech #<%= @micropost.id %></h3>
+  </div>
+</div>
+
+<div class="row">
+
+
+  <div class="span8">
+    <span id= "<%= @micropost.id %>" class="content">
+      <p>No Flash!</p>
+    </span>
+  </div>
+
+  <div class="span2">
+    <h4 align="center">Positive:</h4>
+    
+    <div class="btn-group btn-group-vertical">
+      <%= link_to "Diction", "#", class: "btn btn-small btn-success" %>
+      <%= link_to "Posture", "#", class: "btn btn-small btn-success" %>
+      <%= link_to "Pacing", "#", class: "btn btn-small btn-success" %>
+      <%= link_to "Voice", "#", class: "btn btn-small btn-success" %>
+      <%= link_to "Body Language", "#", class: "btn btn-small btn-success" %>
+      <%= link_to "Facial Expression", "#", class: "btn btn-small btn-success" %>
+      <%= link_to "Transition", "#", class: "btn btn-small btn-success" %>
+    </div>
+  </div>
+
+  <div class="span2">
+    <h4 align="center">Critical:</h4>
+     
+    <div class="btn-group btn-group-vertical">
+      <%= link_to "Diction", "#", class: "btn btn-small btn-danger" %>
+      <%= link_to "Posture", "#", class: "btn btn-small btn-danger" %>
+      <%= link_to "Pacing", "#", class: "btn btn-small btn-danger" %>
+      <%= link_to "Voice", "#", class: "btn btn-small btn-danger" %>
+      <%= link_to "Body Language", "#", class: "btn btn-small btn-danger" %>
+      <%= link_to "Facial Expression", "#", class: "btn btn-small btn-danger" %>
+      <%= link_to "Transition", "#", class: "btn btn-small btn-danger" %>
+    </div>
+  </div>
+  
+</div>
+
+<div class="row">
+  <div class="span12">
+    <hr>
+    <p> comments place holder </p>
+  </div>
+</div>
