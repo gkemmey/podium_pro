@@ -11,13 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130608170839) do
+ActiveRecord::Schema.define(:version => 20130608204141) do
+
+  create_table "critiques", :force => true do |t|
+    t.integer  "micropost_id"
+    t.integer  "reviewer_id",  :null => false
+    t.string   "type"
+    t.boolean  "positive"
+    t.string   "comment"
+    t.integer  "seconds"
+    t.datetime "created_at",   :null => false
+  end
+
+  add_index "critiques", ["micropost_id", "seconds"], :name => "index_critiques_on_micropost_id_and_seconds"
+
+  create_table "lessons", :force => true do |t|
+    t.integer  "number"
+    t.string   "title"
+    t.string   "description"
+    t.string   "youtube_id"
+    t.string   "assignment"
+    t.datetime "created_at",  :null => false
+  end
+
+  add_index "lessons", ["number"], :name => "index_lessons_on_number"
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "lesson_id"
+    t.string   "youtube_id"
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
@@ -36,11 +61,13 @@ ActiveRecord::Schema.define(:version => 20130608170839) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           :default => false
+    t.boolean  "admin",             :default => false
+    t.boolean  "professional"
+    t.integer  "current_lesson_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
