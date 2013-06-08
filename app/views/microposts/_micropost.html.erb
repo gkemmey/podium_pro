@@ -1,8 +1,33 @@
 <li>
-  <span class="content">
-    <!-- iframe width="560" height="315" src="http://www.youtube.com/embed/<%= raw(micropost.content) %>" frameborder="0" allowfullscreen enablejsapi="1"></iframe -->
-    <iframe width="560" height="315" src="http://www.youtube.com/v/<%= raw(micropost.content) %>?version=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+  <script type="text/javascript">
+    var micropost_id = "<%= micropost.id %>";
+    var video_key = "<%= micropost.content %>";
+
+    var params = { allowScriptAccess: "always" };
+    var atts = { id: "player_" + micropost_id };
+
+    swfobject.embedSWF("http://www.youtube.com/v/" + video_key + "?enablejsapi=1&",
+                       micropost_id, "425", "356", "8", null, null, params, atts);
+  </script>
+
+  <script type="text/javascript">
+    var getTime = function(id) {
+      document.getElementById("output").innerHTML += id + "<br />";
+
+      var player = document.getElementById(id);
+
+      document.getElementById("output").innerHTML += player.getCurrentTime() + "<br />";
+    }
+  </script>
+
+  <span id= "<%= micropost.id %>" class="content">
+    <p>No Flash!</p>
   </span>
+
+  <br /><%= button_to_function "Get Time!", "getTime(\"player_#{micropost.id}\")", class: "btn btn-medium btn-primary" %>
+  
   <span class="timestamp">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
   </span>
