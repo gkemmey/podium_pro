@@ -2,8 +2,10 @@ class Micropost < ActiveRecord::Base
   attr_accessible :content
   belongs_to :user
 
+  before_save :strip_youtube_id
+
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 140 }
+  validates :content, presence: true
 
   default_scope order: 'microposts.created_at DESC'
 
@@ -12,5 +14,16 @@ class Micropost < ActiveRecord::Base
                          WHERE follower_id = :user_id"
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", 
           user_id: user.id)
+  end
+
+  def strip_youtube_id
+    if self.content.include? "watch?v="
+      self.content = self.content.split("=")[1][0...11]
+    
+    elsif self.content.include? "embed/"
+      self.content = self.content.split("embed/")[1][0...11]
+    else
+      # not a good link
+    end
   end
 end
