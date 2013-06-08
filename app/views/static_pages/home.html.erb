@@ -1,5 +1,11 @@
 <% if signed_in? %>
   <div class="row">
+    <div class="span6 offset1">
+      <h3>Feedback for Me</h3>
+      <%= render 'shared/feed' %>
+      <h3>Speeches to Critique</h3>
+      <%= render 'shared/feed' %>
+    </div>
     <aside class="span4">
       <section>
         <%= render 'shared/user_info' %>
@@ -8,13 +14,15 @@
         <%= render 'shared/stats' %>
       </section>
       <section>
+        <p/><p/>
+        <h4>Continue with Lesson 4...</h4>
+        <p/><p/>
+      </section>
+      <section>
+        <h4>Upload your speech</h4>
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
-    <div class="span8">
-      <h3>Micropost Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
   </div>
 <% else %>
   <div class="center hero-unit">
