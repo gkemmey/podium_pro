@@ -4,7 +4,7 @@
 
 <script type="text/javascript">
   var micropost_id = "<%= @micropost.id %>";
-  var video_key = "<%= @micropost.content %>";
+  var video_key = "<%= @micropost.youtube_id %>";
 
   var params = { allowScriptAccess: "always" };
   var atts = { id: "player_" + micropost_id };
@@ -71,6 +71,7 @@
     <section>
       <h1>
         <%= gravatar_for @author %>
+        <!-- <%= @author.name %> -->
         <%= link_to @author.name, user_path(@author) %>
       </h1>
     </section>
@@ -78,7 +79,15 @@
 
 
   <div class="span8">
-    <h3>Speech #<%= @micropost.id %></h3>
+    <h3><%= @micropost.title %></h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <span>
+      <p><%= @micropost.content %></p>
+    </span>
   </div>
 </div>
 
