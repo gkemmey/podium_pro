@@ -8,7 +8,8 @@ class MicropostsController < ApplicationController
       flash[:success] = "Micropost created!"
       redirect_to root_url
     else
-      @feed_items = []
+      @feed_items = current_user.feed.limit(3)
+      @my_items = current_user.microposts.limit(3)
       render 'static_pages/home'
     end
   end
