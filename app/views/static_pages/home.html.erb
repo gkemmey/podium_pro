@@ -2,9 +2,20 @@
   <div class="row">
     <div class="span6 offset1">
       <h3>Feedback for Me</h3>
-      <%= render 'shared/my_items' %>
+      <% if @my_items.any? %>
+        <%= render 'shared/my_items' %>
+      <% else %>
+        <p>You have no speeches with feedback</p>
+      <% end %>
+
+      <hr>
+      
       <h3>Speeches to Critique</h3>
-      <%= render 'shared/feed' %>
+      <% if @feed_items.any? %>
+        <%= render 'shared/feed' %>
+      <% else %>
+        <p>None of the people you're following have new speeches</p>
+      <% end %>
     </div>
     <aside class="span4">
       <section>

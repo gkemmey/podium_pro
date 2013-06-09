@@ -2,6 +2,7 @@
   <%= link_to gravatar_for(feed_item.user), feed_item.user %>
   <span class="user">
     <%= link_to feed_item.user.name, feed_item.user %>
+    <!-- <%= feed_item.user.name %> -->
   </span>
   <span class="content">
     <%= link_to feed_item.title, micropost_path(feed_item.id), {style: "color:#CC0099"} %>
