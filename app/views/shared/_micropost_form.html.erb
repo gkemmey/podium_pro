@@ -5,7 +5,7 @@
     <%= f.text_field :youtube_id, placeholder: "Youtube link..." %>
   </div>
   <div class="dropdown">
-    <%= f.select :lesson_id, options_from_collection_for_select(Lesson.all, :id, :title) %>
+    <%= f.select :lesson_id, options_from_collection_for_select(Lesson.all, :id, :title), prompt: "--Video Not For a Lesson--"%>
   </div>
   <div class="field">
     <%= f.text_area :content, placeholder: "Tell us about your speech..." %>
