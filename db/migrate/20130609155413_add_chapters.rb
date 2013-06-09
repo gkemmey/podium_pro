@@ -80,7 +80,7 @@ Note: You want to be heard but at the same time not be offensive to the audience
                       title: "Summary",
                       content: 
 "Watch this video for more information about speaking clearly.",
-                      youtube_id: "RbJ5FoNznGg",
+                      youtube_id: "pBDS6Li2WQM",
                       assignment: false},
                       without_protection: true)
 

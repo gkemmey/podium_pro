@@ -12,7 +12,7 @@ pitch, volume, rate, and vocal quality"},
                      without_protection: true)
        
       Lesson.create({number: 2,
-                     title: "Lesson 2",
+                     title: "Clear Speech Points",
                      description: 
 "Learn how to develop a confident speaking voice for both formal and informal speaking 
 situations. Understand a few basic concepts about voice and vocal delivery including 
@@ -20,7 +20,7 @@ pitch, volume, rate, and vocal quality"},
                      without_protection: true)
        
       Lesson.create({number: 3,
-                     title: "Lesson 3",
+                     title: "Transitions",
                      description: 
 "Learn how to develop a confident speaking voice for both formal and informal speaking 
 situations. Understand a few basic concepts about voice and vocal delivery including 
@@ -28,7 +28,7 @@ pitch, volume, rate, and vocal quality"},
                      without_protection: true)
        
       Lesson.create({number: 4,
-                     title: "Lesson 4",
+                     title: "Body Language",
                      description: 
 "Learn how to develop a confident speaking voice for both formal and informal speaking 
 situations. Understand a few basic concepts about voice and vocal delivery including 
@@ -36,7 +36,7 @@ pitch, volume, rate, and vocal quality"},
                      without_protection: true)
        
       Lesson.create({number: 5,
-                     title: "Lesson 5",
+                     title: "Facial Expressions",
                      description: 
 "Learn how to develop a confident speaking voice for both formal and informal speaking 
 situations. Understand a few basic concepts about voice and vocal delivery including 
@@ -44,7 +44,7 @@ pitch, volume, rate, and vocal quality"},
                      without_protection: true)
        
       Lesson.create({number: 6,
-                     title: "Lesson 6",
+                     title: "Connecting with Your Audience",
                      description: 
 "Learn how to develop a confident speaking voice for both formal and informal speaking 
 situations. Understand a few basic concepts about voice and vocal delivery including 
