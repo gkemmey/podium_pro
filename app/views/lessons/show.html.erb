@@ -5,6 +5,12 @@
     <br/>
     <h3><%= @chapter.title %></h3>
     <br/>
+    
+    <% unless @chapter.youtube_id.blank? %>
+      <iframe width="560" height="315" src="http://www.youtube.com/v/<%= raw(@chapter.youtube_id) %>?version=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+      <br/>
+    <% end %>
+    
     <div>
       <%= raw(@chapter.content) %>
     </div>
