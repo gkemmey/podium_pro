@@ -4,7 +4,7 @@
 
 <script type="text/javascript">
   var micropost_id = "<%= @micropost.id %>";
-  var video_key = "<%= @micropost.content %>";
+  var video_key = "<%= @micropost.youtube_id %>";
 
   var params = { allowScriptAccess: "always" };
   var atts = { id: "player_" + micropost_id };

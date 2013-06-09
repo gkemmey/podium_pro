@@ -1,5 +1,5 @@
 class Micropost < ActiveRecord::Base
-  attr_accessible :content, :lesson_id, :youtube_id
+  attr_accessible :content, :lesson_id, :youtube_id, :title
   
   belongs_to :user
   has_many :critiques
