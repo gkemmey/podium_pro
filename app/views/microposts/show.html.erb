@@ -58,7 +58,11 @@
 
 <script type="text/javascript">
   var jumpToTime = function(seconds, player_id) {
-    document.getElementById("output").innerHTML += seconds + "<br />";
+    document.getElementById("output").innerHTML += parseInt(seconds) + "<br />";
+
+    var player = document.getElementById(player_id);
+
+    player.seekTo(parseInt(seconds), true);
   }
 </script>
 
@@ -86,6 +90,9 @@
       <p>No Flash!</p>
     </span>
   </div>
+
+<!-- only show critique buttonsif it's not your vide -->
+<% if @micropost.user != @user %>
 
   <div class="span2">
     <h4 align="center">Positive:</h4>
@@ -139,6 +146,8 @@
     <%= link_to_function "Post!", "createNotesCritique()", class: "btn btn-medium btn-primary" %>
   </div>
 </div>
+
+<% end %>
 
 <div class="row">
   <div class="span12">
