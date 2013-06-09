@@ -14,13 +14,13 @@
 </script>
 
 <script type="text/javascript">
-  var createCritique = function() {
+  var createCritique = function(type, positive) {
     document.getElementById("output").innerHTML += "making ajax call" + "<br />";
     $.ajax({
       url : "<%= critiques_path %>",
-      data : { type : "diction",
+      data : { type : type,
                id : "<%= @micropost.id %>",
-               positive : "true",
+               positive : (positive === "true"),
                seconds : getTime("player_<%= @micropost.id %>")},
       type : "POST",
       dataType : "script"
@@ -76,13 +76,19 @@
     
     <div class="btn-group btn-group-vertical">
 
-      <%= link_to_function "Diction", "createCritique()", class: "btn btn-small btn-success" %>
-      <%= link_to "Posture", "#", class: "btn btn-small btn-success" %>
-      <%= link_to "Pacing", "#", class: "btn btn-small btn-success" %>
-      <%= link_to "Voice", "#", class: "btn btn-small btn-success" %>
-      <%= link_to "Body Language", "#", class: "btn btn-small btn-success" %>
-      <%= link_to "Facial Expression", "#", class: "btn btn-small btn-success" %>
-      <%= link_to "Transition", "#", class: "btn btn-small btn-success" %>
+      <%= link_to_function "Diction", "createCritique(\"diction\", \"true\")", class: "btn btn-small btn-success" %>
+      
+      <%= link_to_function "Posture", "createCritique(\"posture\", \"true\")", class: "btn btn-small btn-success" %>
+      
+      <%= link_to_function "Pacing", "createCritique(\"pacing\", \"true\")", class: "btn btn-small btn-success" %>
+      
+      <%= link_to_function "Voice", "createCritique(\"voice\", \"true\")", class: "btn btn-small btn-success" %>
+      
+      <%= link_to_function "Body Language", "createCritique(\"body language\", \"true\")", class: "btn btn-small btn-success" %>
+      
+      <%= link_to_function "Facial Expression", "createCritique(\"facial expression\", \"true\")", class: "btn btn-small btn-success" %>
+      
+      <%= link_to_function "Transition", "createCritique(\"transition\", \"true\")", class: "btn btn-small btn-success" %>
     </div>
   </div>
 
@@ -90,13 +96,19 @@
     <h4 align="center">Critical:</h4>
      
     <div class="btn-group btn-group-vertical">
-      <%= link_to "Diction", "#", class: "btn btn-small btn-danger" %>
-      <%= link_to "Posture", "#", class: "btn btn-small btn-danger" %>
-      <%= link_to "Pacing", "#", class: "btn btn-small btn-danger" %>
-      <%= link_to "Voice", "#", class: "btn btn-small btn-danger" %>
-      <%= link_to "Body Language", "#", class: "btn btn-small btn-danger" %>
-      <%= link_to "Facial Expression", "#", class: "btn btn-small btn-danger" %>
-      <%= link_to "Transition", "#", class: "btn btn-small btn-danger" %>
+      <%= link_to_function "Diction", "createCritique(\"diction\", \"false\")", class: "btn btn-small btn-danger" %>
+      
+      <%= link_to_function "Posture", "createCritique(\"posture\", \"false\")", class: "btn btn-small btn-danger" %>
+      
+      <%= link_to_function "Pacing", "createCritique(\"pacing\", \"false\")", class: "btn btn-small btn-danger" %>
+      
+      <%= link_to_function "Voice", "createCritique(\"voice\", \"false\")", class: "btn btn-small btn-danger" %>
+      
+      <%= link_to_function "Body Language", "createCritique(\"body language\", \"false\")", class: "btn btn-small btn-danger" %>
+      
+      <%= link_to_function "Facial Expression", "createCritique(\"facial expression\", \"false\")", class: "btn btn-small btn-danger" %>
+      
+      <%= link_to_function "Transition", "createCritique(\"transition\", \"false\")", class: "btn btn-small btn-danger" %>
     </div>
   </div>
 
