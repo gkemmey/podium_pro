@@ -14,12 +14,29 @@
 </script>
 
 <script type="text/javascript">
+  var createCritique = function() {
+    document.getElementById("output").innerHTML += "making ajax call" + "<br />";
+    $.ajax({
+      url : "<%= critiques_path %>",
+      data : { type : "diction",
+               id : "<%= @micropost.id %>",
+               positive : "true",
+               seconds : getTime("player_<%= @micropost.id %>")},
+      type : "POST",
+      dataType : "script"
+    }).done(function(data) {
+      // placeholder
+    });
+  }
+
   var getTime = function(id) {
     document.getElementById("output").innerHTML += id + "<br />";
 
     var player = document.getElementById(id);
 
     document.getElementById("output").innerHTML += player.getCurrentTime() + "<br />";
+
+    return player.getCurrentTime();
   }
 </script>
 
@@ -52,7 +69,8 @@
     <h4 align="center">Positive:</h4>
     
     <div class="btn-group btn-group-vertical">
-      <%= link_to "Diction", "#", class: "btn btn-small btn-success" %>
+
+      <%= link_to_function "Diction", "createCritique()", class: "btn btn-small btn-success" %>
       <%= link_to "Posture", "#", class: "btn btn-small btn-success" %>
       <%= link_to "Pacing", "#", class: "btn btn-small btn-success" %>
       <%= link_to "Voice", "#", class: "btn btn-small btn-success" %>
@@ -75,12 +93,14 @@
       <%= link_to "Transition", "#", class: "btn btn-small btn-danger" %>
     </div>
   </div>
-  
+
 </div>
 
 <div class="row">
-  <div class="span12">
+  <div id="comments" class="span12">
     <hr>
-    <p> comments place holder </p>
+    <% if !@comments.nil? %>
+      <%= render @comments %>
+    <% end %>
   </div>
 </div>

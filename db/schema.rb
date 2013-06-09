@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20130608204141) do
   create_table "critiques", :force => true do |t|
     t.integer  "micropost_id"
     t.integer  "reviewer_id",  :null => false
-    t.string   "type"
+    t.string   "category"
     t.boolean  "positive"
     t.string   "comment"
     t.integer  "seconds"

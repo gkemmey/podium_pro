@@ -1,7 +1,5 @@
 class Critique < ActiveRecord::Base
-
-  #attr_accessible :content
-
+  
   belongs_to :micropost
   belongs_to :reviewer, class_name: "User"
 

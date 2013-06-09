@@ -4,7 +4,7 @@ class AddCritiquesTable < ActiveRecord::Migration
     create_table :critiques do |t|
       t.references :micropost
       t.integer    :reviewer_id, null: false
-      t.string     :type
+      t.string     :category
       t.boolean    :positive
       t.string     :comment
       t.integer    :seconds
