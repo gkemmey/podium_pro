@@ -13,6 +13,18 @@
 
 ActiveRecord::Schema.define(:version => 20130608204141) do
 
+  create_table "chapters", :force => true do |t|
+    t.integer  "lesson_id"
+    t.integer  "number"
+    t.string   "title"
+    t.string   "content"
+    t.string   "youtube_id"
+    t.boolean  "assignment"
+    t.datetime "created_at", :null => false
+  end
+
+  add_index "chapters", ["lesson_id", "number"], :name => "index_chapters_on_lesson_id_and_number"
+
   create_table "critiques", :force => true do |t|
     t.integer  "micropost_id"
     t.integer  "reviewer_id",  :null => false
@@ -29,8 +41,6 @@ ActiveRecord::Schema.define(:version => 20130608204141) do
     t.integer  "number"
     t.string   "title"
     t.string   "description"
-    t.string   "youtube_id"
-    t.string   "assignment"
     t.datetime "created_at",  :null => false
   end
 
@@ -43,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20130608204141) do
     t.datetime "updated_at", :null => false
     t.integer  "lesson_id"
     t.string   "youtube_id"
+    t.string   "title"
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
@@ -67,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20130608204141) do
     t.string   "remember_token"
     t.boolean  "admin",             :default => false
     t.boolean  "professional"
-    t.integer  "current_lesson_id"
+    t.integer  "current_lesson_id", :default => 1
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
