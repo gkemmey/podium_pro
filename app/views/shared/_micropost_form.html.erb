@@ -1,6 +1,7 @@
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
+    <%= f.text_field :title, placeholder: "Greatness deserves a title..." %>
     <%= f.text_field :youtube_id, placeholder: "Youtube link..." %>
   </div>
   <div class="dropdown">

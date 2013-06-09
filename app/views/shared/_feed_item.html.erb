@@ -4,7 +4,7 @@
     <%= link_to feed_item.user.name, feed_item.user %>
   </span>
   <span class="content">
-    <%= link_to "Speech ##{feed_item.id}", micropost_path(feed_item.id), {style: "color:#CC0099"} %>
+    <%= link_to feed_item.title, micropost_path(feed_item.id), {style: "color:#CC0099"} %>
   </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
