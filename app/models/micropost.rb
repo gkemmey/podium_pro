@@ -1,12 +1,13 @@
 class Micropost < ActiveRecord::Base
-  attr_accessible :content
+  attr_accessible :content, :lesson_id, :youtube_id
+  
   belongs_to :user
   has_many :critiques
 
-  before_save :strip_youtube_id
+  before_create :strip_youtube_id
 
   validates :user_id, presence: true
-  validates :content, presence: true
+  validates :youtube_id, presence: true
 
   default_scope order: 'microposts.created_at DESC'
 
@@ -18,11 +19,11 @@ class Micropost < ActiveRecord::Base
   end
 
   def strip_youtube_id
-    if self.content.include? "watch?v="
-      self.content = self.content.split("=")[1][0...11]
+    if self.youtube_id.include? "watch?v="
+      self.youtube_id = self.youtube_id.split("=")[1][0...11]
     
-    elsif self.content.include? "embed/"
-      self.content = self.content.split("embed/")[1][0...11]
+    elsif self.youtube_id.include? "embed/"
+      self.youtube_id = self.youtube_id.split("embed/")[1][0...11]
     else
       # not a good link
     end
