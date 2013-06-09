@@ -27,7 +27,7 @@ class AddCritiquesTable < ActiveRecord::Migration
     
     
     add_column :users, :professional, :boolean
-    add_column :users, :current_lesson_id, :integer
+    add_column :users, :current_lesson_id, :integer, default: 1
     
     add_column :microposts, :lesson_id, :integer
     add_column :microposts, :youtube_id, :string
