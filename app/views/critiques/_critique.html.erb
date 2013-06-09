@@ -1,24 +1,30 @@
+<% if critique.category != "text"
+    modified_seconds = critique.seconds - 3
 
-  <% if critique.category != "text"
-      modified_seconds = critique.seconds - 3
+    notes = (critique.positive ? "Great" : "Poor") + " #{critique.category.capitalize}"
+  else
+    modified_seconds = critique.seconds - 10
+    Rails.logger.debug "COMMENT #{critique.comment}"
+    notes = critique.comment
+  end 
 
-      notes = (critique.positive ? "Great" : "Poor") + " #{critique.category.capitalize}"
-    else
-      modified_seconds = critique.seconds - 10
-      notes = critique.comment
-    end 
+  function_string = "jumpToTime(\"#{modified_seconds}\", \"player_#{critique.micropost_id}\")" 
 
-    function_string = "jumpToTime(\"#{modified_seconds}\", \"player_#{critique.micropost_id}\")" 
+  if modified_seconds > 0
+    minutes = modified_seconds / 60
+    seconds = modified_seconds % 60
+  else
+    modified_seconds = 0
+    minutes = 0
+    seconds = 0
+  end
+%>
 
-    if modified_seconds > 0
-      minutes = modified_seconds / 60
-      seconds = modified_seconds % 60
-    else
-      modified_seconds = 0
-      minutes = 0
-      seconds = 0
-    end
-  %>
-
-  <td><%= link_to_function "#{minutes}:#{seconds.to_s.rjust(2, '0')}", function_string %></td>
-  <td><%= notes %></td>
+<td><%= link_to_function "#{minutes}:#{seconds.to_s.rjust(2, '0')}", function_string %></td>
+<td><%= notes %></td>
+<td>
+  <%= link_to "delete", critique_path(critique), 
+                        method: :delete,
+                        data: { confirm: 'You sure?' },
+                        title: "title" %>
+</td>

@@ -3,30 +3,18 @@ class CritiquesController < ApplicationController
 
   def create
     @critique = Critique.new
-    Rails.logger.debug "PARAMS"
-    params.each {|p| Rails.logger.debug p}
 
-    Rails.logger.debug "IN CREATE"
-
-
-    if params[:type] != "text"
-      @critique.micropost_id = params[:id]
-      @critique.reviewer_id = current_user.id
-      @critique.category = params[:type].to_s
-      @critique.positive = params[:positive]
-      @critique.seconds = params[:seconds].to_i.floor
-    else
-      # text comment
+    if params[:type] == "text"
+      @critique.comment = params[:comment]
     end
 
+    @critique.micropost_id = params[:id]
+    @critique.reviewer_id = current_user.id
+    @critique.category = params[:type]
+    @critique.positive = params[:positive]
+    @critique.seconds = params[:seconds].to_i.floor
+
     if(@critique.save!)
-      @rendered_critique = render_to_string(partial: "critiques/critique",
-                                 layout: false,
-                                 locals: { critique: @critique } )
-
-      Rails.logger.debug "RENDER STRING:"
-      Rails.logger.debug @rendered_critique
-
       respond_to do |format|
         format.js
       end
@@ -39,6 +27,19 @@ class CritiquesController < ApplicationController
           render critiques_path
         }
       end
+    end
+  end
+
+  def destroy
+    @critique = Critique.find_by_id(params[:id])
+    micropost = @critique.micropost
+
+    if @critique.destroy
+      flash.notice = "Critique removed!"
+      redirect_to micropost_path(micropost.id)
+    else
+      redirect
+      redirect_to micropost_path(micropost.id)
     end
   end 
 end

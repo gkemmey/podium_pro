@@ -16,6 +16,7 @@
 <script type="text/javascript">
   var createCritique = function(type, positive) {
     document.getElementById("output").innerHTML += "making ajax call" + "<br />";
+
     $.ajax({
       url : "<%= critiques_path %>",
       data : { type : type,
@@ -24,9 +25,24 @@
                seconds : getTime("player_<%= @micropost.id %>")},
       type : "POST",
       dataType : "script"
-    }).done(function(data) {
-      // placeholder
     });
+  }
+
+  var createNotesCritique = function() {
+
+    if($("#notes").val()) { // only go if there's text to submit
+      $.ajax({
+        url : "<%= critiques_path %>",
+        data : { type : "text",
+                 comment : $("#notes").val(),
+                 id : "<%= @micropost.id %>",
+                 positive : null,
+                 seconds : getTime("player_<%= @micropost.id %>")},
+        type : "POST",
+        dataType : "script"
+      });
+    }
+    
   }
 
   var getTime = function(id) {
@@ -111,7 +127,17 @@
       <%= link_to_function "Transition", "createCritique(\"transition\", \"false\")", class: "btn btn-small btn-danger" %>
     </div>
   </div>
+</div>
 
+<div class="row">
+  <br />
+  <div class="span6">
+    <%= text_area_tag "notes", nil, placeholder: "Have a little more to say, add a note..." %>
+  </div>
+
+  <div class="span2">
+    <%= link_to_function "Post!", "createNotesCritique()", class: "btn btn-medium btn-primary" %>
+  </div>
 </div>
 
 <div class="row">
