@@ -34,7 +34,7 @@ class AddCritiquesTable < ActiveRecord::Migration
       t.datetime   :created_at, null: false
     end
     
-    add_index :lessons, :number
+    add_index :chapters, [:lesson_id, :number]
     
     
     add_column :users, :professional, :boolean
