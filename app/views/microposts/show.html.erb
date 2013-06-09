@@ -15,7 +15,7 @@
 
 <script type="text/javascript">
   var createCritique = function(type, positive) {
-    document.getElementById("output").innerHTML += "making ajax call" + "<br />";
+    //document.getElementById("output").innerHTML += "making ajax call" + "<br />";
 
     $.ajax({
       url : "<%= critiques_path %>",
@@ -46,11 +46,11 @@
   }
 
   var getTime = function(id) {
-    document.getElementById("output").innerHTML += id + "<br />";
+    //document.getElementById("output").innerHTML += id + "<br />";
 
     var player = document.getElementById(id);
 
-    document.getElementById("output").innerHTML += player.getCurrentTime() + "<br />";
+    //document.getElementById("output").innerHTML += player.getCurrentTime() + "<br />";
 
     return player.getCurrentTime();
   }
@@ -58,7 +58,7 @@
 
 <script type="text/javascript">
   var jumpToTime = function(seconds, player_id) {
-    document.getElementById("output").innerHTML += parseInt(seconds) + "<br />";
+    //document.getElementById("output").innerHTML += parseInt(seconds) + "<br />";
 
     var player = document.getElementById(player_id);
 
