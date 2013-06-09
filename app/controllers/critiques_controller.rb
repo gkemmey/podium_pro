@@ -20,6 +20,13 @@ class CritiquesController < ApplicationController
     end
 
     if(@critique.save!)
+      @rendered_critique = render_to_string(partial: "critiques/critique",
+                                 layout: false,
+                                 locals: { critique: @critique } )
+
+      Rails.logger.debug "RENDER STRING:"
+      Rails.logger.debug @rendered_critique
+
       respond_to do |format|
         format.js
       end

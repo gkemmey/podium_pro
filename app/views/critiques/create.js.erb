@@ -1,3 +1,6 @@
 <% Rails.logger.debug "IN CREATE JS" %>
 
-$("#comments").html("<p> added a comment </p>");
+$("#comments").prepend("<tr><%= escape_javascript(render(
+                     partial: "critiques/critique",
+                     layout: false,
+                     locals: { critique: @critique } ))%></tr>");

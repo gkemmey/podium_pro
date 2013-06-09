@@ -17,7 +17,9 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.find_by_id(params[:id])
     @user = current_user
     @author = @micropost.user
-    @comments = Critique.where("micropost_id = ? ", @micropost.id)
+    @comments = Critique.where("micropost_id = ? AND reviewer_id = ?", 
+                               @micropost.id,
+                               @user.id).order("created_at DESC")
   end
 
   def destroy
