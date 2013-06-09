@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130608204141) do
+ActiveRecord::Schema.define(:version => 20130609155413) do
 
   create_table "chapters", :force => true do |t|
     t.integer  "lesson_id"

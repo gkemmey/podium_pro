@@ -51,8 +51,6 @@ situations. Understand a few basic concepts about voice and vocal delivery inclu
 pitch, volume, rate, and vocal quality"},
                      without_protection: true)
     end
-    
-    
   end
 
   def down
