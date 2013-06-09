@@ -1,5 +1,6 @@
 class CritiquesController < ApplicationController
   before_filter :signed_in_user
+  before_filter :correct_user, only: :destroy
 
   def create
     @critique = Critique.new
@@ -41,5 +42,13 @@ class CritiquesController < ApplicationController
       redirect
       redirect_to micropost_path(micropost.id)
     end
-  end 
+  end
+
+private
+
+  def correct_user
+      @critique = Critique.find_by_id(params[:id])
+
+      redirect_to root_url if @critique.reviewer != current_user
+    end 
 end
