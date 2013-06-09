@@ -8,8 +8,6 @@
     notes = critique.comment
   end 
 
-  function_string = "jumpToTime(\"#{modified_seconds}\", \"player_#{critique.micropost_id}\")" 
-
   if modified_seconds > 0
     minutes = modified_seconds / 60
     seconds = modified_seconds % 60
@@ -18,6 +16,8 @@
     minutes = 0
     seconds = 0
   end
+
+  function_string = "jumpToTime(\"#{modified_seconds}\", \"player_#{critique.micropost_id}\")" 
 %>
 
 <td><%= link_to_function "#{minutes}:#{seconds.to_s.rjust(2, '0')}", function_string %></td>
