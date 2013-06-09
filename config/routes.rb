@@ -13,6 +13,9 @@ SampleApp::Application.routes.draw do
   resources :microposts, only: [:create, :destroy, :show]
   resources :relationships, only: [:create, :destroy]
   resources :critiques, only: [:new, :create, :destroy]
+  resources :lessons do
+    resources :chapters
+  end
       
   root to: 'static_pages#home'
 

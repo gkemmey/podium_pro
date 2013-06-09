@@ -1,0 +1,29 @@
+<% provide(:title, "Lesson #{@lesson.number}:  #{@lesson.title}") %>
+<div class="row">
+  <div class="span8 offset2">
+    <h2><%= "Lesson #{@lesson.number}:  #{@lesson.title}" %></h2>
+    <br/>
+    <h3><%= @chapter.title %></h3>
+    <br/>
+    
+    <% unless @chapter.youtube_id.blank? %>
+      <iframe width="560" height="315" src="http://www.youtube.com/v/<%= raw(@chapter.youtube_id) %>?version=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+      <br/>
+    <% end %>
+    
+    <div>
+      <%= raw(@chapter.content) %>
+    </div>
+    <br/>
+  </div>
+  <div class="span2 offset8">
+    <% next_chapter = @chapter.number += 1 %>
+    <% if @last_chapter %>
+      <%= link_to "Done!", lessons_path, 
+          class: "btn btn-large btn-primary" %>
+    <% else %>
+      <%= link_to "Continue", lesson_path(@lesson, chapter: next_chapter), 
+          class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
