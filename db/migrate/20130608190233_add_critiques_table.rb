@@ -18,8 +18,19 @@ class AddCritiquesTable < ActiveRecord::Migration
       t.integer    :number
       t.string     :title
       t.string     :description
+      t.datetime   :created_at, null: false
+    end
+    
+    add_index :lessons, :number
+    
+    
+    create_table :chapters do |t|
+      t.references :lesson
+      t.integer    :number
+      t.string     :title
+      t.string     :content
       t.string     :youtube_id
-      t.string     :assignment
+      t.boolean    :assignment
       t.datetime   :created_at, null: false
     end
     
@@ -31,5 +42,6 @@ class AddCritiquesTable < ActiveRecord::Migration
     
     add_column :microposts, :lesson_id, :integer
     add_column :microposts, :youtube_id, :string
+    add_column :microposts, :title, :string
   end
 end
