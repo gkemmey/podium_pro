@@ -7,9 +7,9 @@ class AddChapters < ActiveRecord::Migration
                       number: 1,
                       title: "Introduction",
                       content: 
-"Have you ever noticed that when you get nervous speaking you lose control of your voice, start talking fast and run out of breath? Or perhaps you don’t feel like you are heard?  Whatever the case, you are in good company! Your voice has a major impact on how well you communicate.
+"Have you ever noticed that when you get nervous speaking you lose control of your voice, start talking fast and run out of breath? Or perhaps you don't feel like you are heard?  Whatever the case, you are in good company! Your voice has a major impact on how well you communicate.
 
-In this lesson, you’ll learn how to develop a confident speaking voice for both formal and informal speaking situations. The first step is to understand a few basic concepts about voice and vocal delivery and the second step is to practice. We’ll discuss concepts such as pitch, volume, rate, and vocal quality in today’s lesson and you’ll have plenty of opportunities to work on developing vocal confidence and effective vocal delivery.",
+In this lesson, you'll learn how to develop a confident speaking voice for both formal and informal speaking situations. The first step is to understand a few basic concepts about voice and vocal delivery and the second step is to practice. We'll discuss concepts such as pitch, volume, rate, and vocal quality in today's lesson and you'll have plenty of opportunities to work on developing vocal confidence and effective vocal delivery.",
                       youtube_id: "",
                       assignment: false},
                       without_protection: true)
@@ -18,7 +18,7 @@ In this lesson, you’ll learn how to develop a confident speaking voice for bot
                       number: 2,
                       title: "Breathing",
                       content: 
-"Breath support is a key component to effective speaking. If you use shallow breathing called “clavicular” breathing, you will not be able to support the words you want to share. Good breathing will also calm you and make you feel less fearful.
+"Breath support is a key component to effective speaking. If you use shallow breathing called \"clavicular\" breathing, you will not be able to support the words you want to share. Good breathing will also calm you and make you feel less fearful.
 
 Exercise:
 <ol>
@@ -86,7 +86,7 @@ Note: You want to be heard but at the same time not be offensive to the audience
 
       Chapter.create({lesson_id: Lesson.find_by_number(1).id,
                       number: 6,
-                      title: "Show What You’ve Learned and Get Feedback",
+                      title: "Show What You've Learned and Get Feedback",
                       content: 
 "After completing the lesson above, how do you feel you did?
 <ul>
@@ -96,7 +96,7 @@ Note: You want to be heard but at the same time not be offensive to the audience
 <li>Are you able to adjust your volume to emphasize different points?</li>
 </ul>
 
-When you are ready for feedback, upload your video!  To do so, first post your video on youtube.  Then, copy the link into the upload field on our website.  That’s it!  Your video will then be available for the community to give you feedback and to help you improve your skills.
+When you are ready for feedback, upload your video!  To do so, first post your video on youtube.  Then, copy the link into the upload field on our website.  That's it!  Your video will then be available for the community to give you feedback and to help you improve your skills.
 ",
                       youtube_id: "",
                       assignment: true},
